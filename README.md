@@ -2,12 +2,12 @@
 
 ## 🔬 Research
 **👀 Computer Vision**
-- 🧩 Image Segmentation
+- ✂️ Image Segmentation
 - 🎨 Image Generation
 
 ## 💻 Hobby Development
 - 🤖 Telegram Bots
-- 🔌 VS Code Plugins
+- 🧩 VS Code Extensions
 - ☁️ Network Proxy Tools
 
 ## 📫 Connect
