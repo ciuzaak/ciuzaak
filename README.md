@@ -1,38 +1,67 @@
-# Hi, I'm Ciuzaak Wong 👋
+# Hi, I'm Ciuzaak 👋
 
 > [!NOTE]
-> **AI-generated profile summary.** This overview was synthesized from recurring themes across my recent and long-running public and private repositories. Private repository names and implementation details are intentionally omitted.
+> **This profile is AI-generated.** Every time a new model comes out, I let it read my GitHub and rewrite this page.
+> This version was written by **Claude Opus 5.5 in September 2026**, after going through ~60 of my public and private repositories and their recent commit history.
+> Private project names, collaborators, and internal details are deliberately left out.
 
-## Research & Engineering
+## What I'm building right now
 
-My work follows a broad path from **visual learning research** toward **multimodal perception and embodied systems**:
+Almost everything I've touched in 2026 points at one question:
 
-- **Visual intelligence** — image segmentation, object detection, visual grounding, open-vocabulary perception, and VLM evaluation.
-- **Data-centric AI** — synthetic data generation, automatic annotation, quality control, augmentation, and dataset selection.
-- **Embodied AI** — indoor robotics, RGB-D perception, ROS 2, navigation, and simulation in Isaac Sim.
-- **3D scene infrastructure** — USD pipelines, scene conversion, collision geometry, and simulation-ready environments.
+**What does it take for a robot to be genuinely useful in an ordinary home?**
 
-The longer arc began with biomedical and industrial vision—semi-supervised and continual segmentation, dense prediction, depth, and autofocus—and has gradually moved closer to systems that perceive, reason, and act.
+Working backwards from that question, my repositories have quietly turned into a pipeline:
 
-## Things I Build
+```mermaid
+flowchart LR
+    A["🎨 Generate<br/>household scenes"] --> B["🏷️ Auto-label<br/>with VLMs"]
+    B --> C["🔍 Detect<br/>household objects"]
+    C --> D["🧱 Build worlds<br/>3D → USD + colliders"]
+    D --> E["🤖 Act<br/>ROS 2 · SLAM · Nav2"]
+    E -. "domain randomization" .-> A
+```
 
-Outside the main research thread, I tend to make tools around whatever gets in the way:
+| Stage | What that looks like in the repos |
+| --- | --- |
+| **Generate** | Text-to-image pipelines (Z-Image, FLUX.2, Qwen-Image) that mass-produce indoor household scenes. One YAML config per domain; quantization and acceleration benchmarks along the way. |
+| **Label** | Qwen3-VL auto-labeling with crop-level verification, duplicate-box conflict cleanup, and taxonomies that grew from 87 to 400+ household classes. |
+| **Detect** | LoRA fine-tuning of a 4B VLM for one-pass detection, head-to-head evaluation against YOLOv8 / YOLO-World / YOLOE, OOD generalization studies, speculative decoding, and deployment trade-offs for RK3588-class edge boards. |
+| **Build worlds** | 3D-FRONT and SketchUp scenes → simulation-ready USD: shared references, voxelized wall colliders fitted by greedy box merging, multi-GPU Blender rendering, and visual QA galleries. |
+| **Act** | A home-companion robot in Isaac Sim: differential drive, IMU + wheel odometry, 4× RGB-D and LiDAR, a ROS 2 Humble bridge, SLAM / Nav2, and runtime randomization of small objects. |
 
-- Developer tools and editor extensions
-- Small desktop apps, CLIs, and automation
-- Generative image and video workflows
-- Bots, infrastructure, Docker, and network utilities
+## The longer arc
 
-Selected public projects:
+```text
+2021 ─ 2022   biomedical image segmentation — semi-supervised, continual, context priors
+2023          data augmentation, diffusion models, generated training data
+2024 ─ 2025   industrial vision — autofocus, procedural PBR defect synthesis, VLM retrieval, coreset selection
+2026 ─ now    multimodal perception → sim-ready 3D worlds → embodied agents
+```
 
-- [LabelEditor for VS Code](https://github.com/ciuzaak/LabelEditor-for-VSCode) — image annotation with LabelMe and SAM-assisted masks.
-- [MiniMax H3 Bot](https://github.com/ciuzaak/minimax-h3-bot) — a multi-GPU image-to-video service with ComfyUI and Telegram integration.
-- [Sidebrowser](https://github.com/ciuzaak/sidebrowser) — a compact side-panel browser for Windows.
-- [Neon Postgres Sync](https://github.com/ciuzaak/Neon-Postgres-Sync) — two-way text synchronization inside VS Code.
+The throughline: I keep moving one step closer to the physical world, from pixels, to labels, to scenes, to a robot that has to drive through them.
+
+## Side quests
+
+When something gets in my way, I usually end up building a tool for it:
+
+| Project | What it does |
+| --- | --- |
+| [**LabelEditor for VS Code**](https://github.com/ciuzaak/LabelEditor-for-VSCode) | Annotate images inside VS Code: polygons, boxes, lines, points, and SAM-assisted masks. Outputs LabelMe JSON. |
+| [**MiniMax H3 Bot**](https://github.com/ciuzaak/minimax-h3-bot) | A multi-GPU image-to-video service for ComfyUI, with JSONL scheduling, audio, Turbo LoRA, and a Telegram front end. |
+| [**Sidebrowser**](https://github.com/ciuzaak/sidebrowser) | A side-panel Electron browser for Windows that auto-hides at the screen edge. Written entirely by Claude. |
+| [**Neon Postgres Sync**](https://github.com/ciuzaak/Neon-Postgres-Sync) | Two-way sync between local files and Neon Postgres rows, with an interactive diff in VS Code. |
+| [**Claude Telegram Bot**](https://github.com/ciuzaak/Claude-Telegram-Bot) | One of the early Claude bots for Telegram (2023), with 200+ stars. |
+| [**docker_scripts**](https://github.com/ciuzaak/docker_scripts) · [**mihomo_scripts**](https://github.com/ciuzaak/mihomo_scripts) | Scripts for shared servers: old glibc, no TUN, and so on. |
+
+Also in progress but not public: a Wikipedia typing-practice TUI with Cangjie hints, a closed-loop computer-use agent built on Qwen3-VL, and a subscription converter for Clash and Surge.
+
+## Toolbox
+
+`Python` `PyTorch` `vLLM` `Qwen3-VL` `ComfyUI` `Isaac Sim` `OpenUSD` `ROS 2` `Blender` `TypeScript` `Electron` `VS Code API` `Docker`
 
 ## Elsewhere
 
-- [Website](https://ciuzaak.com)
-- [Email](mailto:wong@ciuzaak.com)
-- [Instagram](https://instagram.com/ciuzaak)
-- [YouTube](https://www.youtube.com/@ciuzaakwong)
+[🌐 ciuzaak.com](https://ciuzaak.com) · [✉️ wong@ciuzaak.com](mailto:wong@ciuzaak.com) · [📷 Instagram](https://instagram.com/ciuzaak) · [▶️ YouTube](https://www.youtube.com/@ciuzaakwong)
+
+<sub>Generated by Claude Opus 5.5 · September 2026 · The next model will probably disagree with it.</sub>
